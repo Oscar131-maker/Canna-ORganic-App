@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+ 
+<style>
+    body{
+        font-family: 'Roboto', sans-serif;
+    }
+   .container-diploma{
+       position: relative;
+       width: 100%;
+   }
+   .flexbox{
+       width: 100%;
+       display:flex;
+       justify-content: center;
+   }
+   .diploma-name{
+       position:absolute;
+       top: 220px;
+       width: 1014px;
+       display:flex;
+       justify-content: center;
+   }
+   .diploma-name h2{
+       color: #69703d;
+       font-size: 50px;
+       font-weight: 500;
+   }
+   .cedula{
+       position:absolute;
+       top: 290px;
+       width: 1014px;
+       display:flex;
+       justify-content: center;
+   }
+   .cedula span{
+       font-size:30px;
+       color: #69703d;
+       font-weight: 400;
+   }
+   .curso-mes{
+       position:absolute;
+       top: 380px;
+       width: 1014px;
+       display:flex;
+       justify-content: center;  
+   }
+   .curso-mes p{
+       font-weight: 700;
+       color: #3a3839;
+       font-size: 20px;
+   }
+   .botones-bottom{
+       width: 100%;
+       display: flex;
+       justify-content: center;
+   }
+   .btn{
+       margin:0px 20px;
+   }
+
+   /***** Form ******/
+   .datos{
+       padding:50px 0px;
+       background-color: #eeee;
+   }
+   .form-content{
+       width:95%;
+       margin: auto;
+       display:flex;
+   }
+   .form-group{
+       width: 50%;
+       padding:0px 20px;
+   }
+
+</style>
+
+</head>
+<body>
+
+<!-- Formulario -->
+<section class="datos">
+ <div class="form-content">
+     <div class="form-group">
+         <label for="names">Nombres y Apellidos:</label>
+         <input type="text" name="names" id="names" class="form-control" placeholder="Nombre de alumno">
+     </div>
+     <div class="form-group">
+        <label for="inicio-curso">Mes de inicio de curso:</label>
+        <input type="text" name="inicio-curso" id="inicio-curso" class="form-control" placeholder="abril">
+    </div>
+
+</div>
+
+<div class="form-content">
+   <div class="form-group">
+       <label for="cedula">Número de cédula:</label>
+       <input type="text" name="cedula" id="cedula" class="form-control" placeholder="Numero de cédula">
+   </div>
+
+   <div class="form-group">
+       <input type="submit" name="actualizar" 
+       class="btn btn-primary mt-4" value="Actualizar" id="inputbtn">
+   </div>
+
+</div>
+</section>
+
+
+<!-- Image -->
+<div class="container-diploma">
+   <div class="flexbox">
+    <div class="diploma-bg">
+        <img src="diploma-base.png">
+      </div>
+      <div class="diploma-name">
+          <h2 id="name_diploma">Nombre de alumno</h2>
+      </div>
+      <div class="cedula">
+          <span id="cedula_diploma">Dni:03963513S</span>
+      </div>
+      <div class="curso-mes" id="inicio_curso">
+          <p>ASISTIÓ AL CURSO VIRTUAL EN EL MES DE ABRIL DE 2020.</p>
+      </div>
+   </div>
+</div>
+
+<div class="botones-bottom my-5">
+    <input id="btn-Preview-Image" type="button" value="Vista" class="btn btn-warning" />
+    <a id="btn-Convert-Html2Image" href="#" class="btn btn-primary">Descargar</a>
+    <br>
+    <p>Antes de descargar por favor visualizar la vista previa.</p>
+</div>
+
+<div id="previewImage">
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"></script>
+<script>
+$(document).ready(function(){
+
+var element = $(".container-diploma"); // global variable
+var getCanvas; // global variable
+ 
+    $("#btn-Preview-Image").on('click', function () {
+         html2canvas(element, {
+         onrendered: function (canvas) {
+                $("#previewImage").append(canvas);
+                getCanvas = canvas;
+             }
+         });
+    });
+
+	$("#btn-Convert-Html2Image").on('click', function () {
+    var imgageData = getCanvas.toDataURL("image/png");
+    // Now browser starts downloading it instead of just showing it
+    var newData = imgageData.replace(/^data:image\/png/, "data:application/octet-stream");
+    $("#btn-Convert-Html2Image").attr("download", "certificado_cannabis_organic.png").attr("href", newData);
+	});
+
+});
+</script>
+<script src="app.js"></script>
+
+</body>
+</html>
