@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
  
 <style>
     body{
         font-family: 'Roboto', sans-serif;
+    }
+    #main{
+        display:none;
     }
    .container-diploma{
        position: relative;
@@ -16,6 +19,9 @@
        width: 100%;
        display:flex;
        justify-content: center;
+   }
+   .form-group{
+       width: 100%;
    }
    .diploma-name{
        position:absolute;
@@ -72,72 +78,121 @@
        margin: auto;
        display:flex;
    }
-   .form-group{
-       width: 50%;
-       padding:0px 20px;
+   /** Formulario **/
+   #form-login{
+       position:fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100vh;
+       background-color:rgba(0,0,0,0.6);
+       background-image: url(/img-6.jpg);
+       background-position: center;
+       background-size: cover;
+       background-blend-mode: soft-light;
+       z-index: 99999;
    }
+   .display-4{
+       font-weight:300;
+   }
+   #form-login .form-group .btn{
+       margin:0px 0px !important;
+   }
+
 
 </style>
 
 </head>
 <body>
 
-<!-- Formulario -->
-<section class="datos">
- <div class="form-content">
-     <div class="form-group">
-         <label for="names">Nombres y Apellidos:</label>
-         <input type="text" name="names" id="names" class="form-control" placeholder="Nombre de alumno">
-     </div>
-     <div class="form-group">
-        <label for="inicio-curso">Mes de inicio de curso:</label>
-        <input type="text" name="inicio-curso" id="inicio-curso" class="form-control" placeholder="abril">
-    </div>
-
-</div>
-
-<div class="form-content">
-   <div class="form-group">
-       <label for="cedula">Número de cédula:</label>
-       <input type="text" name="cedula" id="cedula" class="form-control" placeholder="Numero de cédula">
-   </div>
-
-   <div class="form-group">
-       <input type="submit" name="actualizar" 
-       class="btn btn-primary mt-4" value="Actualizar" id="inputbtn">
-   </div>
-
-</div>
+<!-- Form Login -->
+<section id="form-login">
+  <div class="container my-5">
+      <h3 class="text-center display-4 text-white">Ingresa el nombre de usuario y contraseña</h3>
+      <hr class="bg-white">
+      
+      <div class="container mt-5">
+        <form id="submit-login">
+            <div class="form-group w-100">
+                <label for="username" class="text-white">Nombre de usuario</label>
+                <input type="text" class="form-control" name="username" id="username">
+            </div>
+  
+            <div class="form-group w-100">
+              <label for="password" class="text-white">Contraseña</label>
+              <input type="password" class="form-control" name="password" id="password">
+          </div>
+  
+          <div class="form-group">
+              <button type="submit" class="btn btn-outline-light">Ingresar</button>
+          </div>
+  
+        </form>
+      </div>
+       
+  </div>
 </section>
 
+<main id="main">
 
-<!-- Image -->
-<div class="container-diploma">
-   <div class="flexbox">
-    <div class="diploma-bg">
-        <img src="diploma-base.png">
+    <!-- Formulario -->
+<section class="datos">
+    <div class="form-content">
+        <div class="form-group">
+            <label for="names">Nombres y Apellidos:</label>
+            <input type="text" name="names" id="names" class="form-control w-100" placeholder="Nombre de alumno">
+        </div>
+        <div class="form-group">
+           <label for="inicio-curso">Mes de inicio de curso:</label>
+           <input type="text" name="inicio-curso" id="inicio-curso" class="form-control w-100" placeholder="abril">
+       </div>
+   
+   </div>
+   
+   <div class="form-content">
+      <div class="form-group">
+          <label for="cedula">Número de cédula:</label>
+          <input type="text" name="cedula" id="cedula" class="form-control w-100" placeholder="Numero de cédula">
       </div>
-      <div class="diploma-name">
-          <h2 id="name_diploma">Nombre de alumno</h2>
+   
+      <div class="form-group">
+          <input type="submit" name="actualizar" 
+          class="btn btn-primary mt-4" value="Actualizar" id="inputbtn">
       </div>
-      <div class="cedula">
-          <span id="cedula_diploma">Dni:03963513S</span>
-      </div>
-      <div class="curso-mes" id="inicio_curso">
-          <p>ASISTIÓ AL CURSO VIRTUAL EN EL MES DE ABRIL DE 2020.</p>
+   
+   </div>
+   </section>
+   
+   
+   <!-- Image -->
+   <div class="container-diploma">
+      <div class="flexbox">
+       <div class="diploma-bg">
+           <img src="diploma-base.png">
+         </div>
+         <div class="diploma-name">
+             <h2 id="name_diploma">Nombre de alumno</h2>
+         </div>
+         <div class="cedula">
+             <span id="cedula_diploma">Dni:03963513S</span>
+         </div>
+         <div class="curso-mes" id="inicio_curso">
+             <p>ASISTIÓ AL CURSO VIRTUAL EN EL MES DE ABRIL DE 2020.</p>
+         </div>
       </div>
    </div>
-</div>
+   
+   <div class="botones-bottom my-5">
+       <input id="btn-Preview-Image" type="button" value="Vista" class="btn btn-warning" />
+       <a id="btn-Convert-Html2Image" href="#" class="btn btn-primary">Descargar</a>
+       <br>
+       <p>Antes de descargar por favor visualizar la vista previa.</p>
+   </div>
+   
+   <div id="previewImage">
+   </div>
 
-<div class="botones-bottom my-5">
-    <input id="btn-Preview-Image" type="button" value="Vista" class="btn btn-warning" />
-    <a id="btn-Convert-Html2Image" href="#" class="btn btn-primary">Descargar</a>
-    <br>
-    <p>Antes de descargar por favor visualizar la vista previa.</p>
-</div>
-
-<div id="previewImage">
-</div>
+</main>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"></script>
